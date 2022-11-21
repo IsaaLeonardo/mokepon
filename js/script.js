@@ -13,6 +13,6 @@ function selectMokepon() {
 
 // The program starts here:
 window.addEventListener('load', () => {
-    let selectMokeponButton = document.getElementById("button-select")
-    let mokeponSelected = selectMokeponButton.addEventListener("click", selectMokepon)
+    let buttonSelectMokepon = document.getElementById("button-select")
+    let mokeponSelected = buttonSelectMokepon.addEventListener("click", selectMokepon)
 })
