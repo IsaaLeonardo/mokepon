@@ -1,10 +1,12 @@
 function selectMokepon() {
-    let mokepon
     let mokeponsAvailable = document.querySelectorAll("[name='mokepon']")
     
-    for (let element of mokeponsAvailable){
-        if (element.checked) {
-            mokepon = element
+    for (let mokepon of mokeponsAvailable){
+        if (mokepon.checked) {
+            let mokeponNameSpan = document.getElementById('mokepon-player')
+            let mokeponName = document.querySelector(`[for='${mokepon.id}']`).innerHTML
+            
+            mokeponNameSpan.innerHTML = mokeponName
             return mokepon
         }
     }
