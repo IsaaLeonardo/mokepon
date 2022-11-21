@@ -5,10 +5,11 @@ function selectMokepon() {
     for (let element of mokeponsAvailable){
         if (element.checked) {
             mokepon = element
+            return mokepon
         }
     }
-
-    return mokepon
+    
+    alert("Por favor, haz click en alguno de los mokepones o no podrás seguir jugando")
 }
 
 // The program starts here:
