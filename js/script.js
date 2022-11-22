@@ -4,28 +4,31 @@ function selectMokepon() {
     for (let mokepon of mokeponsAvailable){
         if (mokepon.checked) {
             showMokepon(mokepon, "player")
-            selectMokeponOpponent(mokepon.id)
-            return mokepon
+            let mokeponOpponent = selectMokeponOpponent(mokeponsAvailable, mokepon.id)
+            
+            return [mokepon, mokeponOpponent]
         }
     }
     
     alert("Por favor, haz click en alguno de los mokepones o no podrás seguir jugando")
 }
 
-function selectMokeponOpponent(exceptionId){
-    let mokeponsList = document.querySelectorAll("[name='mokepon']")
-    let mokeponsAvailable
-
-    for (let mokeponIndex in mokeponsList) {
-        let mokepon = mokeponsList[mokeponIndex]
+function selectMokeponOpponent(mokeponsList, mokeponExceptionId) {
+    while(true) {
+        let shuffleIndex = shuffle(0, mokeponsList.length - 1)
+        let mokeponOpponent = mokeponsList[shuffleIndex]
         
-        if (mokepon.id == exceptionId) {
-            console.log(mokeponsList)
-            // mokeponsAvailable = mokeponsList.splice(mokeponIndex, 1)
+        if (mokeponOpponent.id == mokeponExceptionId){
+            continue
         }
+
+        showMokepon(mokeponOpponent, "opponent")
+        return mokeponOpponent
     }
-    console.log(mokeponsAvailable)
-    // showMokepon(mokepon, "opponent")
+}
+
+function shuffle(min, max) {
+    return Math.floor(Math.random() * (max - min + 1) + min)
 }
 
 function showMokepon(mokepon, owner){
